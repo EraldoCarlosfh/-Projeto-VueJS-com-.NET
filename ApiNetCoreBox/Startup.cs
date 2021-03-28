@@ -36,6 +36,7 @@ namespace ApiNetCoreBox
 
             services.AddScoped<IRepository, Repository>();
 
+            services.AddCors();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

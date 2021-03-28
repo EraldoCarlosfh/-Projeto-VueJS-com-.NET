@@ -6,22 +6,21 @@
           class="d-flex flex-wrap flex-md-nowrap align-items-center justify-content-between pt-3 pb-2 mb-3 border-bottom"
         >
           <h1 :title="ex">{{ name }}</h1>
-          <p>{{ usuariosCount }}</p>
+          <p>{{ respostasCount }}</p>
         </div>
 
         <form class="row">
           <div class="col-12 md-6 input-group">
-            <input type="text" :v-model="usuario.nome" class="form-control" placeholder="Nome do técnico" />
+            <input type="text" class="form-control" placeholder="Nome do técnico" />
           </div>
 
           <div class="col-12 md-6" id="DadosForm">
-            <input type="text" v-model="usuario.cpf" class="form-control" id="inputCpf" placeholder="CPF do técnico" />
+            <input type="text" class="form-control" id="inputCpf" placeholder="CPF do técnico" />
           </div>
 
           <div class="col-12" id="DadosForm">
             <input
-              type="email"
-              v-model="usuario.email"
+              type="email"              
               class="form-control"
               id="inputEmail"
               placeholder="E-mail do técnico"
@@ -30,8 +29,7 @@
 
           <div class="col-12 md-6" id="DadosForm">
             <input
-              type="date"
-              v-model="usuario.dataNasc"
+              type="date"              
               class="form-control"
               id="inputData"
               placeholder="Data de nascimentodo técnico"
@@ -39,11 +37,11 @@
           </div>
 
           <div class="col-4 md-6" id="DadosForm">
-            <input type="text" v-model="usuario.cid" class="form-control" id="inputCid" placeholder="Cidade" />
+            <input type="text" class="form-control" id="inputCid" placeholder="Cidade" />
           </div>
 
           <div class="col-4 md-6" id="DadosForm">
-            <select id="inputEst" v-model="usuario.est" class="form-control">
+            <select id="inputEst" class="form-control">
               <option selected>Estado...</option>
               <optgroup label="Região Norte">
                 <option value="AP">Amapá</option>
@@ -90,13 +88,12 @@
           </div>
 
           <div class="col-4 md-2" id="DadosForm">
-            <input type="text" v-model="usuario.cep" class="form-control" id="inputCep" placeholder="CEP" />
+            <input type="text" class="form-control" id="inputCep" placeholder="CEP" />
           </div>
 
           <div class="col-5" id="DadosForm">
             <select
-              name="Espec"
-              v-model="usuario.stacks"
+              name="Espec"              
               class="form-control"
               size="10"
               multiple="multiple"
@@ -116,10 +113,10 @@
             </select>
           </div>
           <div class="col-12">
-            <button v-if="!isEdit" class="btn btn-primary input-group-btn" @click.prevent="saveUsers(usuario)">
+            <button v-if="!isEdit" class="btn btn-primary input-group-btn" @click.prevent="">
               Salvar
             </button>
-            <button v-if="isEdit" class="btn btn-primary input-group-btn" @click.prevent="updateUsers(usuario)">
+            <button v-if="isEdit" class="btn btn-primary input-group-btn" @click.prevent="">
               Atualizar
             </button>
           </div>
@@ -157,6 +154,11 @@ export default {
          }
 
     },
+    computed: {
+    repostaCount() {
+      return `Total de Técnicos Cadastrados é ${this.resposta.length}`
+    },
+  },
      mounted() {
       Technical.listar().then(resposta => {
         console.log(resposta)
