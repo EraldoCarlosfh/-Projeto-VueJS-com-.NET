@@ -37,7 +37,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr> <!--<tr :v-for="usuarios in usuario" :key="usuarios">-->
           <th scope="row">1</th>
           <td>Maurici Mendes Júnior</td>
           <td>110.763.456-78</td>
@@ -60,10 +60,17 @@
   </div>
 </template>
 <script>
-
+import Cadastro from './Cadastro'
 
 export default {
   name: 'Tecnicos',
+  Cadastro,
+
+
+
+props: {
+  usuarios: Array,
+}
 
 };
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Http.Cors;
 using ApiNetCoreBox.Data;
 using ApiNetCoreBox.Models;
 using Microsoft.AspNetCore.Http;
@@ -10,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ApiNetCoreBox.Controllers
 {
+    [EnableCors(origins: "http://localhost:8080", headers: "*", methods: "*")]
     [Route("api/[controller]")]
     [ApiController]
     public class TechnicalController : ControllerBase
@@ -118,14 +120,21 @@ namespace ApiNetCoreBox.Controllers
             {
                 
                 var technical = await _repo.GetTechnicalById(id, true);
+                var stack = await _repo.GetStackById(id);
                 if (technical != null)
-                {
-                                  
-                    _repo.Delete(technical);
+                {                                  
+                    _repo.Delete(stack);                    
+                    if (await _repo.SaveChangeAsync()){
 
+                     technical = await _repo.GetTechnicalById(id, true);
+                     _repo.Delete(technical);
 
-                    if (await _repo.SaveChangeAsync())
+                     if (await _repo.SaveChangeAsync()) {                    
                         return Ok("Deletado com Sucesso");
+                         
+                     } 
+                }
+                
                 }
             }
             catch (Exception ex)

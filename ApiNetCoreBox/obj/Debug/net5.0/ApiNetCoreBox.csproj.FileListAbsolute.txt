@@ -108,3 +108,8 @@ H:\workspace\Projeto_BoxTI\ApiNetCoreBox\obj\Debug\net5.0\ApiNetCoreBox.dll
 H:\workspace\Projeto_BoxTI\ApiNetCoreBox\obj\Debug\net5.0\ref\ApiNetCoreBox.dll
 H:\workspace\Projeto_BoxTI\ApiNetCoreBox\obj\Debug\net5.0\ApiNetCoreBox.pdb
 H:\workspace\Projeto_BoxTI\ApiNetCoreBox\obj\Debug\net5.0\ApiNetCoreBox.genruntimeconfig.cache
+H:\workspace\BoxTI\ApiNetCoreBox\bin\Debug\net5.0\System.Web.Cors.dll
+H:\workspace\BoxTI\ApiNetCoreBox\bin\Debug\net5.0\System.Net.Http.Formatting.dll
+H:\workspace\BoxTI\ApiNetCoreBox\bin\Debug\net5.0\System.Web.Http.dll
+H:\workspace\BoxTI\ApiNetCoreBox\bin\Debug\net5.0\System.Web.Http.Cors.dll
+H:\workspace\BoxTI\ApiNetCoreBox\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll

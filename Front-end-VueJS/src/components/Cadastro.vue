@@ -6,7 +6,7 @@
           class="d-flex flex-wrap flex-md-nowrap align-items-center justify-content-between pt-3 pb-2 mb-3 border-bottom"
         >
           <h1 :title="ex">{{ name }}</h1>
-          <p>{{ respostasCount }}</p>
+          <p><!--{{ repostaCount }}--></p>
         </div>
 
         <form class="row">
@@ -19,21 +19,11 @@
           </div>
 
           <div class="col-12" id="DadosForm">
-            <input
-              type="email"              
-              class="form-control"
-              id="inputEmail"
-              placeholder="E-mail do técnico"
-            />
+            <input type="email" class="form-control" id="inputEmail" placeholder="E-mail do técnico" />
           </div>
 
           <div class="col-12 md-6" id="DadosForm">
-            <input
-              type="date"              
-              class="form-control"
-              id="inputData"
-              placeholder="Data de nascimentodo técnico"
-            />
+            <input type="date" class="form-control" id="inputData" placeholder="Data de nascimentodo técnico" />
           </div>
 
           <div class="col-4 md-6" id="DadosForm">
@@ -92,14 +82,7 @@
           </div>
 
           <div class="col-5" id="DadosForm">
-            <select
-              name="Espec"              
-              class="form-control"
-              size="10"
-              multiple="multiple"
-              style="overflow:hidden"
-              id="Stacks"
-            >
+            <select name="Espec" class="form-control" size="10" multiple="multiple" style="overflow:hidden" id="Stacks">
               <option value="HTML" label="HTML"></option>
               <option value="CSS" label="CSS"></option>
               <option value="PostegreSQL" label="PostegreSQL"></option>
@@ -129,6 +112,7 @@
 <script>
 import Technical from '../services/technicals'
 
+
 export default {
   name: 'Cadastro',
 
@@ -138,33 +122,28 @@ export default {
       name: 'Formulário de Técnico',
       ex: 'Cadastro de Técnicos',
       isEdit: false,
-      usuario: {
-        ckecked: false,
-        nome: '',
-        id: '',
-        cpf: '',
-        cep: '',
-        email: '',
-        dataNasc: '',
-        cid: '',
-        est: '',
-        stacks: [],
-      }
-
-         }
-
-    },
-    computed: {
+    }
+  },
+  computed: {
     repostaCount() {
       return `Total de Técnicos Cadastrados é ${this.resposta.length}`
     },
   },
-     mounted() {
-      Technical.listar().then(resposta => {
-        console.log(resposta)
-      })
-
-    }
+  mounted() {     
+     Technical.list().then(resposta => {    
+     console.log(this.usuarios = resposta.data)
+      
+    })
+    Technical.save().then(resposta => {    
+     console.log(this.usuarios = resposta.data)
+      
+    })
+    Technical.delete().then(resposta => {    
+     console.log(this.usuarios = resposta.data)
+      
+    })
+    
+  },
 }
 //location.reload()
 </script>
