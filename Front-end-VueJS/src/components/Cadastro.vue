@@ -126,12 +126,11 @@
         </form>
       </div>
     </div>
-   
   </div>
 </template>
 
 <script>
-
+import Technical from '../services/technicals'
 
 export default {
   name: 'Cadastro',
@@ -153,79 +152,19 @@ export default {
         cid: '',
         est: '',
         stacks: [],
-      },
+      }
 
          }
-  },
 
-  computed: {
-    usuariosCount() {
-      return `Total de Técnicos Cadastrados é ${this.usuarios.length}`
     },
-  },
-
-  created() {
-    this.usuarios = JSON.parse(localStorage.getItem('usuariosApp'))
-    //console.log('Vue Criado...')
-  },
-
-  methods: {
-    saveUsers(usuario) {
-      let usuarios = localStorage.getItem('usuariosApp')
-      //console.log(usuario)
-      usuario.id = new Date().getTime()
-
-      if (usuarios) {
-        // atualizar meus usuarios no local storage
-        usuarios = JSON.parse(usuarios)
-        usuarios.push(usuario)
-      } else {
-        //eu crio esta chave usuarios
-        usuarios = [usuario]
-      }
-      this.usuarios = usuarios
-      //atualizar local storage independentemente de novo usuario ou nova adição
-      localStorage.setItem('usuariosApp', JSON.stringify(usuarios))
-      location.reload()
-    },
-
-    removeUsers(usuarioId) {
-      let usuarios = localStorage.getItem('usuariosApp')
-
-      if (!usuarios) return
-
-      usuarios = JSON.parse(usuarios)
-
-      usuarios = usuarios.filter(usuario => {
-        return usuario.id != usuarioId
+     mounted() {
+      Technical.listar().then(resposta => {
+        console.log(resposta)
       })
 
-      this.usuarios = usuarios
-
-      localStorage.setItem('usuariosApp', JSON.stringify(usuarios))
-    },
-
-    editUsers(usuario) {
-      this.usuario = usuario
-      this.isEdit = true
-    },
-
-    updateUsers(usuario) {
-      let usuarios = this.usuarios.map(usuarioMap => {
-        if (usuarioMap.id == usuario.id) {
-          return usuario
-        }
-        return usuarioMap
-      })
-
-      this.usuarios = usuarios
-      this.isEdit = false
-      localStorage.setItem('usuariosApp', JSON.stringify(usuarios))
-
-      location.reload()
-    },
-  },
+    }
 }
+//location.reload()
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
