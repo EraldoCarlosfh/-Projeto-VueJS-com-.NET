@@ -6516,11 +6516,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\workspace\\BoxTI\\ApiNetCoreBox\\ApiNetCoreBox.csproj",
+      "projectUniqueName": "H:\\workspace\\Projeto_BoxTI\\ApiNetCoreBox\\ApiNetCoreBox.csproj",
       "projectName": "ApiNetCoreBox",
-      "projectPath": "H:\\workspace\\BoxTI\\ApiNetCoreBox\\ApiNetCoreBox.csproj",
+      "projectPath": "H:\\workspace\\Projeto_BoxTI\\ApiNetCoreBox\\ApiNetCoreBox.csproj",
       "packagesPath": "C:\\Users\\Jefferson\\.nuget\\packages\\",
-      "outputPath": "H:\\workspace\\BoxTI\\ApiNetCoreBox\\obj\\",
+      "outputPath": "H:\\workspace\\Projeto_BoxTI\\ApiNetCoreBox\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Jefferson\\AppData\\Roaming\\NuGet\\NuGet.Config"

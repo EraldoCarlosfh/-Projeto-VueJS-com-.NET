@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wGUZcN/yCwt57PpkpKAxetS4njimUv2pePHq9MNpAeXQYBGuFhSOcQDoNHlUzE+Qu6c5wRvC9+pa2XwkMjCJOQ==",
+  "dgSpecHash": "A6HMf1HUbrgQ4mckpLswf6tHGPW5WuhVp64Kb5ZD1zXPG4B3hR0cDd/RVKnJeIiYLMgBwrqtMKeJkE7+GzMTnQ==",
   "success": true,
-  "projectFilePath": "H:\\workspace\\BoxTI\\ApiNetCoreBox\\ApiNetCoreBox.csproj",
+  "projectFilePath": "H:\\workspace\\Projeto_BoxTI\\ApiNetCoreBox\\ApiNetCoreBox.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jefferson\\.nuget\\packages\\bouncycastle.netcore\\1.8.3\\bouncycastle.netcore.1.8.3.nupkg.sha512",
     "C:\\Users\\Jefferson\\.nuget\\packages\\google.protobuf\\3.11.4\\google.protobuf.3.11.4.nupkg.sha512",
