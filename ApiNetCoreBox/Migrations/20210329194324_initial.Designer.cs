@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiNetCoreBox.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210329091941_initial")]
+    [Migration("20210329194324_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

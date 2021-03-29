@@ -11,19 +11,19 @@
 
         <form class="row" @submit.prevent="save">          
           <div class="col-12 md-6 input-group">
-            <input type="text" class="form-control" placeholder="Nome do técnico" v-model="tech.name"/>
+            <input type="text" class="form-control" maxlength="35" placeholder="Nome do técnico" v-model="tech.name" />
           </div>
 
           <div class="col-12 md-6" id="DadosForm">
-            <input type="text" class="form-control" id="inputCpf" placeholder="CPF do técnico" v-model="tech.cpf"/>
+            <input type="text" class="form-control" id="inputCpf" maxlength="14" placeholder="CPF do técnico (000.000.000-00" v-model="tech.cpf" />
           </div>
 
           <div class="col-12" id="DadosForm">
-            <input type="email" class="form-control" id="inputEmail" placeholder="E-mail do técnico" v-model="tech.email"/>
+            <input type="email" class="form-control" id="inputEmail" maxlength="35" placeholder="E-mail do técnico" v-model="tech.email"/>
           </div>
 
           <div class="col-12 md-6" id="DadosForm">
-            <input type="date" class="form-control" id="inputData" placeholder="Data de nascimentodo técnico" v-model="tech.createDate"/>
+            <input type="date" class="form-control" id="inputData" maxlength="10" placeholder="Data de nascimentodo técnico" v-model="tech.birthdate"/>
           </div>
 
           <div class="col-4 md-6" id="DadosForm">
@@ -96,10 +96,11 @@
             </select>
           </div>
           <div class="col-12">
-            <button v-if="!isEdit" class="btn btn-primary input-group-btn" @click.prevent="save(tech)">
+            <button v-if="!isEdit" class="btn btn-primary input-group-btn" @click.prevent="save()">
               Salvar
+              
             </button>
-            <button v-if="isEdit" class="btn btn-primary input-group-btn" @click.prevent="update(tech)">
+            <button v-if="isEdit" class="btn btn-primary input-group-btn" @click.prevent="update(technical)">
               Atualizar
             </button>
           </div>
@@ -125,14 +126,9 @@
           <td>{{technical.email}}</td>
           <td>{{technical.createDate}}</td>        
           <td>            
-            <a href="#" class="icon1" @click.prevent="del(6)"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-  <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-</svg></a>
+            <button type="button" value="" @click.prevent="remove(techical.id in technicals)">Deletar</button>
             &emsp;
-            <a href="#" class="icon2" @click.prevent="update(technical)"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-  <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
-</svg></a>
-                                   
+            <button type="button"  @click.prevent="update(technical)">Atualizar</button>
           </td>
         </tr>
       </tbody>      
@@ -146,31 +142,29 @@ import Technical from '../services/technicals'
 
 export default {
   name: 'Cadastro',
-
   data() {
-    return {
+    return {      
       technicals: [],
       name: 'Formulário de Técnico',
       ex: 'Cadastro de Técnicos',
       isEdit: false,
-      tech: {
-        id:"",
+      tech: {        
         name: "",
         cpf: "",
         email: "",
-        birthdate: "",
-        state: "",
+        birthdate: new Date(""),
         city: "",
+        state: "",
         cep: "",
-        changeDate:"",
-        createDate:"",
-        stacks:[
+        changedate: new Date(),
+        createdate: new Date(),
+        stacks: [
           {
-            id:"",
-            stacks:""
-            }
-            ]
-      }
+      
+      stacks: ""
+    }
+  ]
+}
     }
   },
 
@@ -190,31 +184,40 @@ export default {
       this.technicals = resposta.data
      //console.log()      
     })
-    },
-    
-    save(){            
-      Technical.save(this.technicals).then(resposta => {
-        console.log(this.technicals)
-        this.tech = {}
-        this.technicals = resposta.data     
+    },    
+      save(){                     
+        Technical.save(this.tech).then(resposta=>{
+        console.log(resposta)
         alert('Salvo com sucesso!')
-        this.list()
-      })
-    },
+        })
+        location.reload() 
+       
+      },
+
       
-      del(id){
-        Technical.del(id).then(resposta => {
-          console.log(resposta)
+      remove(){
+        Technical.del(this.technical.id,this.technicals).then(resposta => {
+          console.log(this.technical.id)
+          this.technical = resposta
            alert('Deletado com sucesso!')
         })
       },
 
-      update(technicals) {
-        this.tech = technicals
-      }
-    }
+     update(){
+        Technical.update(this.technical.id, this.technicals).then(resposta => {
+          //console.log(resposta)
+          this.tech = resposta
+           alert('Atualizado com sucesso!')
+        })
+      },
+      editUsers(technicals) {
+      this.technicals = technicals
+      this.isEdit = true
     //location.reload() 
-}    
+}  
+  }
+}
+
 
 </script>
 
@@ -243,7 +246,9 @@ export default {
 
 /* Add "scoped" attribute to limit CSS to this component only -->*/
 
-.h2 {
+h1,
+.h1 {
+  font-size: 2.5rem;
   font-size: 17pt;
   font-family: Arial, Helvetica, sans-serif;
   color: #244873 !important;

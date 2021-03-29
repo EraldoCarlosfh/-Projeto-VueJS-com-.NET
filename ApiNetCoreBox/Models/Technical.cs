@@ -24,8 +24,9 @@ namespace ApiNetCoreBox.Models{
         public string Email { get; set; }
 
 
-        [Required(ErrorMessage="Este Campo é Obrigatório!")]
-        [DisplayFormat(DataFormatString = "mm/dd/yyyy")]
+        [Required(ErrorMessage="Este Campo é Obrigatório!")] 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}")]
         public DateTime BirthDate {get; set;}
 
         [Required(ErrorMessage="Este Campo é Obrigatório!")]
@@ -37,12 +38,14 @@ namespace ApiNetCoreBox.Models{
         [Required(ErrorMessage="Este Campo é Obrigatório!")]
         public string Cep { get; set; }
 
-        [Required(ErrorMessage="Este Campo é Obrigatório!")]
-        [DisplayFormat(DataFormatString = "mm/dd/yyyy")]
+        [Required(ErrorMessage="Este Campo é Obrigatório!")] 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}")]
         public DateTime ChangeDate { get; set; }
 
-        [Required(ErrorMessage="Este Campo é Obrigatório!")]
-        [DisplayFormat(DataFormatString = "mm/dd/yyyy")]
+        [Required(ErrorMessage="Este Campo é Obrigatório!")] 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}")]
         public DateTime CreateDate { get; set; }
 
         public virtual List<Stack> Stacks {get; set;}

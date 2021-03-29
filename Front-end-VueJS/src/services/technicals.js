@@ -4,16 +4,15 @@ export default {
     list:() =>{
         return http.get('Technical')        
     },
-    save:(Technical) =>{
-        return http.post('Technical',Technical)     
-    },
-    del:(id) =>{
-        return http.del('Technical',{id})     
+    save:(technicals) =>{
+        return http.post('Technical', technicals)     
     },
 
-    update: (technicals) => {
-        return http.put('Technical',technicals )
+    del:(id, technicals) =>{
+        return http.delete(`Technical/${id}`, technicals)    
     },
-   
-    
+
+    update: (id, technicals) => {
+        return http.put(`Technical/${id}`, technicals)
+    },    
 }
