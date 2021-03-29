@@ -18,7 +18,9 @@ namespace ApiNetCoreBox.Migrations
                     CPF = table.Column<string>(nullable: false),
                     Email = table.Column<string>(nullable: false),
                     BirthDate = table.Column<DateTime>(nullable: false),
-                    Address = table.Column<string>(nullable: false),
+                    City = table.Column<string>(nullable: false),
+                    State = table.Column<string>(nullable: false),
+                    Cep = table.Column<string>(nullable: false),
                     ChangeDate = table.Column<DateTime>(nullable: false),
                     CreateDate = table.Column<DateTime>(nullable: false)
                 },

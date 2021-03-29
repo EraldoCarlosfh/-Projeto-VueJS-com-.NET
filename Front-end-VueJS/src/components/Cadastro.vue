@@ -6,32 +6,32 @@
           class="d-flex flex-wrap flex-md-nowrap align-items-center justify-content-between pt-3 pb-2 mb-3 border-bottom"
         >
           <h1 :title="ex">{{ name }}</h1>
-          <p><!--{{ repostaCount }}--></p>
+          <p>{{ repostaCount }}</p>
         </div>
 
-        <form class="row">
+        <form class="row" @submit.prevent="save">          
           <div class="col-12 md-6 input-group">
-            <input type="text" class="form-control" placeholder="Nome do técnico" />
+            <input type="text" class="form-control" placeholder="Nome do técnico" v-model="tech.name"/>
           </div>
 
           <div class="col-12 md-6" id="DadosForm">
-            <input type="text" class="form-control" id="inputCpf" placeholder="CPF do técnico" />
+            <input type="text" class="form-control" id="inputCpf" placeholder="CPF do técnico" v-model="tech.cpf"/>
           </div>
 
           <div class="col-12" id="DadosForm">
-            <input type="email" class="form-control" id="inputEmail" placeholder="E-mail do técnico" />
+            <input type="email" class="form-control" id="inputEmail" placeholder="E-mail do técnico" v-model="tech.email"/>
           </div>
 
           <div class="col-12 md-6" id="DadosForm">
-            <input type="date" class="form-control" id="inputData" placeholder="Data de nascimentodo técnico" />
+            <input type="date" class="form-control" id="inputData" placeholder="Data de nascimentodo técnico" v-model="tech.createDate"/>
           </div>
 
           <div class="col-4 md-6" id="DadosForm">
-            <input type="text" class="form-control" id="inputCid" placeholder="Cidade" />
+            <input type="text" class="form-control" id="inputCid" placeholder="Cidade" v-model="tech.city"/>
           </div>
 
           <div class="col-4 md-6" id="DadosForm">
-            <select id="inputEst" class="form-control">
+            <select id="inputEst" class="form-control" v-model="tech.state">
               <option selected>Estado...</option>
               <optgroup label="Região Norte">
                 <option value="AP">Amapá</option>
@@ -77,12 +77,12 @@
             </select>
           </div>
 
-          <div class="col-4 md-2" id="DadosForm">
-            <input type="text" class="form-control" id="inputCep" placeholder="CEP" />
+          <div class="col-4 md-2" id="DadosForm" >
+            <input type="text" class="form-control" id="inputCep" placeholder="CEP" v-model="tech.cep"/>
           </div>
 
           <div class="col-5" id="DadosForm">
-            <select name="Espec" class="form-control" size="10" multiple="multiple" style="overflow:hidden" id="Stacks">
+            <select name="Espec" class="form-control" size="10" multiple="multiple" style="overflow:hidden" id="Stacks" v-model="tech.stack">
               <option value="HTML" label="HTML"></option>
               <option value="CSS" label="CSS"></option>
               <option value="PostegreSQL" label="PostegreSQL"></option>
@@ -96,16 +96,47 @@
             </select>
           </div>
           <div class="col-12">
-            <button v-if="!isEdit" class="btn btn-primary input-group-btn" @click.prevent="">
+            <button v-if="!isEdit" class="btn btn-primary input-group-btn" @click.prevent="save(tech)">
               Salvar
             </button>
-            <button v-if="isEdit" class="btn btn-primary input-group-btn" @click.prevent="">
+            <button v-if="isEdit" class="btn btn-primary input-group-btn" @click.prevent="update(tech)">
               Atualizar
             </button>
           </div>
         </form>
       </div>
     </div>
+    <table class="table col-10 offset-md-2" >
+      <thead>
+        <tr>
+          <th scope="col">Código</th>
+          <th scope="col">Nome</th>
+          <th scope="col">CPF</th>
+          <th scope="col">Email</th>
+          <th scope="col">Criado em</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="technical in technicals" :key="technical.id">
+          <th scope="row">{{technical.id}}</th>
+          <td>{{technical.name}}</td>
+          <td>{{technical.cpf}}</td>
+          <td>{{technical.email}}</td>
+          <td>{{technical.createDate}}</td>        
+          <td>            
+            <a href="#" class="icon1" @click.prevent="del(6)"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+  <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+</svg></a>
+            &emsp;
+            <a href="#" class="icon2" @click.prevent="update(technical)"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+  <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+</svg></a>
+                                   
+          </td>
+        </tr>
+      </tbody>      
+    </table>
   </div>
 </template>
 
@@ -118,34 +149,73 @@ export default {
 
   data() {
     return {
-      usuarios: [],
+      technicals: [],
       name: 'Formulário de Técnico',
       ex: 'Cadastro de Técnicos',
       isEdit: false,
+      tech: {
+        id:"",
+        name: "",
+        cpf: "",
+        email: "",
+        birthdate: "",
+        state: "",
+        city: "",
+        cep: "",
+        changeDate:"",
+        createDate:"",
+        stacks:[
+          {
+            id:"",
+            stacks:""
+            }
+            ]
+      }
     }
   },
+
   computed: {
     repostaCount() {
-      return `Total de Técnicos Cadastrados é ${this.resposta.length}`
-    },
+      return `Total de Técnicos Cadastrados é ${this.technicals.length}`
+    }
   },
+
   mounted() {     
-     Technical.list().then(resposta => {    
-     console.log(this.usuarios = resposta.data)
-      
-    })
-    Technical.save().then(resposta => {    
-     console.log(this.usuarios = resposta.data)
-      
-    })
-    Technical.delete().then(resposta => {    
-     console.log(this.usuarios = resposta.data)
-      
-    })
-    
+    this.list()    
   },
-}
-//location.reload()
+  
+  methods: {
+    list() {
+    Technical.list().then(resposta => {    
+      this.technicals = resposta.data
+     //console.log()      
+    })
+    },
+    
+    save(){            
+      Technical.save(this.technicals).then(resposta => {
+        console.log(this.technicals)
+        this.tech = {}
+        this.technicals = resposta.data     
+        alert('Salvo com sucesso!')
+        this.list()
+      })
+    },
+      
+      del(id){
+        Technical.del(id).then(resposta => {
+          console.log(resposta)
+           alert('Deletado com sucesso!')
+        })
+      },
+
+      update(technicals) {
+        this.tech = technicals
+      }
+    }
+    //location.reload() 
+}    
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

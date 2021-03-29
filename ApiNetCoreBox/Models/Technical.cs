@@ -28,15 +28,18 @@ namespace ApiNetCoreBox.Models{
         [DisplayFormat(DataFormatString = "mm/dd/yyyy")]
         public DateTime BirthDate {get; set;}
 
+        [Required(ErrorMessage="Este Campo é Obrigatório!")]
+        public string City { get; set; }
 
         [Required(ErrorMessage="Este Campo é Obrigatório!")]
-        public string Address { get; set; }
+        public string State { get; set; }
 
+        [Required(ErrorMessage="Este Campo é Obrigatório!")]
+        public string Cep { get; set; }
 
         [Required(ErrorMessage="Este Campo é Obrigatório!")]
         [DisplayFormat(DataFormatString = "mm/dd/yyyy")]
         public DateTime ChangeDate { get; set; }
-
 
         [Required(ErrorMessage="Este Campo é Obrigatório!")]
         [DisplayFormat(DataFormatString = "mm/dd/yyyy")]

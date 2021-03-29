@@ -2,13 +2,18 @@ import{ http } from './config'
 
 export default {    
     list:() =>{
-        return http.get('Technical')
-        
+        return http.get('Technical')        
     },
-    save:(usuario) =>{
-        return http.post('Technical',usuario)     
+    save:(Technical) =>{
+        return http.post('Technical',Technical)     
     },
-    delete:(id) =>{
-        return http.delete('Technical',id)     
-    }
+    del:(id) =>{
+        return http.del('Technical',{id})     
+    },
+
+    update: (technicals) => {
+        return http.put('Technical',technicals )
+    },
+   
+    
 }
