@@ -9,25 +9,46 @@
           <p>{{ repostaCount }}</p>
         </div>
 
-        <form class="row" @submit.prevent="save">          
+        <form class="row" @submit.prevent="save">
           <div class="col-12 md-6 input-group">
             <input type="text" class="form-control" maxlength="35" placeholder="Nome do técnico" v-model="tech.name" />
           </div>
 
           <div class="col-12 md-6" id="DadosForm">
-            <input type="text" class="form-control" id="inputCpf" maxlength="14" placeholder="CPF do técnico (000.000.000-00" v-model="tech.cpf" />
+            <input
+              type="text"
+              class="form-control"
+              id="inputCpf"
+              maxlength="14"
+              placeholder="CPF do técnico (000.000.000-00"
+              v-model="tech.cpf"
+            />
           </div>
 
           <div class="col-12" id="DadosForm">
-            <input type="email" class="form-control" id="inputEmail" maxlength="35" placeholder="E-mail do técnico" v-model="tech.email"/>
+            <input
+              type="email"
+              class="form-control"
+              id="inputEmail"
+              maxlength="35"
+              placeholder="E-mail do técnico"
+              v-model="tech.email"
+            />
           </div>
 
           <div class="col-12 md-6" id="DadosForm">
-            <input type="date" class="form-control" id="inputData" maxlength="10" placeholder="Data de nascimentodo técnico" v-model="tech.birthdate"/>
+            <input
+              type="date"
+              class="form-control"
+              id="inputData"
+              maxlength="10"
+              placeholder="Data de nascimentodo técnico"
+              v-model="tech.birthdate"
+            />
           </div>
 
           <div class="col-4 md-6" id="DadosForm">
-            <input type="text" class="form-control" id="inputCid" placeholder="Cidade" v-model="tech.city"/>
+            <input type="text" class="form-control" id="inputCid" placeholder="Cidade" v-model="tech.city" />
           </div>
 
           <div class="col-4 md-6" id="DadosForm">
@@ -77,12 +98,20 @@
             </select>
           </div>
 
-          <div class="col-4 md-2" id="DadosForm" >
-            <input type="text" class="form-control" id="inputCep" placeholder="CEP" v-model="tech.cep"/>
+          <div class="col-4 md-2" id="DadosForm">
+            <input type="text" class="form-control" id="inputCep" placeholder="CEP" v-model="tech.cep" />
           </div>
 
           <div class="col-5" id="DadosForm">
-            <select name="Espec" class="form-control" size="10" multiple="multiple" style="overflow:hidden" id="Stacks" v-model="tech.stack">
+            <select
+              name="Espec"
+              class="form-control"
+              size="10"
+              multiple="multiple"
+              style="overflow:hidden"
+              id="Stacks"
+              v-model="tech.stack"
+            >
               <option value="HTML" label="HTML"></option>
               <option value="CSS" label="CSS"></option>
               <option value="PostegreSQL" label="PostegreSQL"></option>
@@ -98,7 +127,6 @@
           <div class="col-12">
             <button v-if="!isEdit" class="btn btn-primary input-group-btn" @click.prevent="save()">
               Salvar
-              
             </button>
             <button v-if="isEdit" class="btn btn-primary input-group-btn" @click.prevent="update(technical)">
               Atualizar
@@ -107,7 +135,7 @@
         </form>
       </div>
     </div>
-    <table class="table col-10 offset-md-2" >
+    <table class="table col-10 offset-md-2">
       <thead>
         <tr>
           <th scope="col">Código</th>
@@ -120,18 +148,18 @@
       </thead>
       <tbody>
         <tr v-for="technical in technicals" :key="technical.id">
-          <th scope="row">{{technical.id}}</th>
-          <td>{{technical.name}}</td>
-          <td>{{technical.cpf}}</td>
-          <td>{{technical.email}}</td>
-          <td>{{technical.createDate}}</td>        
-          <td>            
+          <th scope="row">{{ technical.id }}</th>
+          <td>{{ technical.name }}</td>
+          <td>{{ technical.cpf }}</td>
+          <td>{{ technical.email }}</td>
+          <td>{{ technical.createDate }}</td>
+          <td>
             <button type="button" value="" @click.prevent="remove(techical.id in technicals)">Deletar</button>
             &emsp;
-            <button type="button"  @click.prevent="update(technical)">Atualizar</button>
+            <button type="button" @click.prevent="update(technical)">Atualizar</button>
           </td>
         </tr>
-      </tbody>      
+      </tbody>
     </table>
   </div>
 </template>
@@ -139,86 +167,80 @@
 <script>
 import Technical from '../services/technicals'
 
-
 export default {
   name: 'Cadastro',
   data() {
-    return {      
+    return {
       technicals: [],
       name: 'Formulário de Técnico',
       ex: 'Cadastro de Técnicos',
       isEdit: false,
-      tech: {        
-        name: "",
-        cpf: "",
-        email: "",
-        birthdate: new Date(""),
-        city: "",
-        state: "",
-        cep: "",
+      tech: {
+        name: '',
+        cpf: '',
+        email: '',
+        birthdate: new Date(''),
+        city: '',
+        state: '',
+        cep: '',
         changedate: new Date(),
         createdate: new Date(),
         stacks: [
           {
-      
-      stacks: ""
-    }
-  ]
-}
+            stacks: '',
+          },
+        ],
+      },
     }
   },
 
   computed: {
     repostaCount() {
       return `Total de Técnicos Cadastrados é ${this.technicals.length}`
-    }
+    },
   },
 
-  mounted() {     
-    this.list()    
+  mounted() {
+    this.list()
   },
-  
+
   methods: {
     list() {
-    Technical.list().then(resposta => {    
-      this.technicals = resposta.data
-     //console.log()      
-    })
-    },    
-      save(){                     
-        Technical.save(this.tech).then(resposta=>{
+      Technical.list().then(resposta => {
+        this.technicals = resposta.data
+        //console.log()
+      })
+    },
+    save() {
+      Technical.save(this.tech).then(resposta => {
         console.log(resposta)
         alert('Salvo com sucesso!')
-        })
-        location.reload() 
-       
-      },
+      })
+      location.reload()
+    },
 
-      
-      remove(){
-        Technical.del(this.technical.id,this.technicals).then(resposta => {
-          console.log(this.technical.id)
-          this.technical = resposta
-           alert('Deletado com sucesso!')
-        })
-      },
+    remove() {
+      Technical.del(this.technical.id, this.technicals).then(resposta => {
+        console.log(this.technical.id)
+        this.technical = resposta
+        alert('Deletado com sucesso!')
+      })
+    },
 
-     update(){
-        Technical.update(this.technical.id, this.technicals).then(resposta => {
-          //console.log(resposta)
-          this.tech = resposta
-           alert('Atualizado com sucesso!')
-        })
-      },
-      editUsers(technicals) {
+    update() {
+      Technical.update(this.technical.id, this.technicals).then(resposta => {
+        //console.log(resposta)
+        this.tech = resposta
+        alert('Atualizado com sucesso!')
+      })
+    },
+    editUsers(technicals) {
       this.technicals = technicals
       this.isEdit = true
-    //location.reload() 
-}  
-  }
+      //location.reload()
+    },
+  },
 }
-
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
