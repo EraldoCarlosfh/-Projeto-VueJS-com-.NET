@@ -49,7 +49,7 @@
           <td>{{ technical.email }}</td>
           <td>{{ technical.createDate }}</td>
           <td>
-              <a href="#" class="icon1" @click.prevent="del(technical.id)"
+              <a href="#" class="icon1" @click.prevent="remove(technical)"
                 ><svg
                   id="svg1"
                   xmlns="http://www.w3.org/2000/svg"
@@ -133,11 +133,12 @@ export default {
      //console.log()      
     })
     }, 
-      del(){
-        Technical.delete(this.Technical.id, this.Technical).then(resposta => {
-          console.log(resposta)
-           alert('Deletado com sucesso!')
-        })
+      remove(technical) {
+      Technical.del(technical.id, technical).then(resposta => {
+        console.log(resposta)        
+        alert('Deletado com sucesso!')
+        location.reload()
+      })
       },
 
     },    

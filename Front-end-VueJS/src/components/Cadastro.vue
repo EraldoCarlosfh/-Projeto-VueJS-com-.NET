@@ -125,7 +125,7 @@
             </select>
           </div>
           <div class="col-12">
-            <button v-if="!isEdit" class="btn btn-primary input-group-btn" @click.prevent="save()">
+            <button v-if="!isEdit"  class="btn btn-primary input-group-btn" @click.prevent="save()">
               Salvar
             </button>
             <button v-if="isEdit" class="btn btn-primary input-group-btn" @click.prevent="update(technical)">
@@ -154,7 +154,7 @@
           <td>{{ technical.email }}</td>
           <td>{{ technical.createDate }}</td>
           <td>
-            <button type="button" value="" @click.prevent="remove(techical.id in technicals)">Deletar</button>
+            <button type="button" value="" @click.prevent="remove(technical)">Deletar</button>
             &emsp;
             <button type="button" @click.prevent="update(technical)">Atualizar</button>
           </td>
@@ -215,23 +215,25 @@ export default {
       Technical.save(this.tech).then(resposta => {
         console.log(resposta)
         alert('Salvo com sucesso!')
-      })
       location.reload()
-    },
-
-    remove() {
-      Technical.del(this.technical.id, this.technicals).then(resposta => {
-        console.log(this.technical.id)
-        this.technical = resposta
-        alert('Deletado com sucesso!')
       })
     },
 
-    update() {
-      Technical.update(this.technical.id, this.technicals).then(resposta => {
+    remove(technical) {
+      Technical.del(technical.id, technical).then(resposta => {
+        console.log(resposta)        
+        alert('Deletado com sucesso!')
+        location.reload()
+      })
+
+    },
+
+    modify(technical) {
+      Technical.update(technical.id, technical).then(resposta => {
         //console.log(resposta)
-        this.tech = resposta
+        technical = resposta
         alert('Atualizado com sucesso!')
+        location.reload()
       })
     },
     editUsers(technicals) {
