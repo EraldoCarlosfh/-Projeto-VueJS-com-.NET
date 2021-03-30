@@ -149,8 +149,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1,
-.h1 {
+h1,.h1 {
   font-size: 2.5rem;
   font-size: 17pt;
   font-family: Arial, Helvetica, sans-serif;
