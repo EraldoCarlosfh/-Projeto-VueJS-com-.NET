@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UWt+b8XqmemrnsD7cDE00ZbMjagSr8YqWTyaLZI5XPv3xZAxUoP086vWElT4HpWYYDm3Xg1Ojz+tzJZt2axyxg==",
+  "dgSpecHash": "rkuNfTfub6IVDDvCjIaSu0YclS9DRe37PDrf7wXnYWerZ0N8vzhgt93NvtbsimBTVvXB8tJlO/l8+FAfLXq3kg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Jefferson\\OneDrive\\Área de Trabalho\\Nova pasta\\-Projeto-VueJS-com-.NET\\ApiNetCoreBox\\ApiNetCoreBox.csproj",
+  "projectFilePath": "H:\\WORKSPACE\\BOXTI\\ApiNetCoreBox\\ApiNetCoreBox.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jefferson\\.nuget\\packages\\bouncycastle.netcore\\1.8.3\\bouncycastle.netcore.1.8.3.nupkg.sha512",
     "C:\\Users\\Jefferson\\.nuget\\packages\\google.protobuf\\3.11.4\\google.protobuf.3.11.4.nupkg.sha512",

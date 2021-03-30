@@ -41,7 +41,7 @@
               type="date"
               class="form-control"
               id="inputData"
-              maxlength="10"
+              maxlength="8"
               placeholder="Data de nascimentodo técnico"
               v-model="tech.birthdate"
             />
@@ -128,7 +128,7 @@
             <button v-if="!isEdit"  class="btn btn-primary input-group-btn" @click.prevent="save()">
               Salvar
             </button>
-            <button v-if="isEdit" class="btn btn-primary input-group-btn" @click.prevent="update(technical)">
+            <button v-if="isEdit" class="btn btn-primary input-group-btn" @click.prevent="modify(technical)">
               Atualizar
             </button>
           </div>
@@ -156,7 +156,7 @@
           <td>
             <button type="button" value="" @click.prevent="remove(technical)">Deletar</button>
             &emsp;
-            <button type="button" @click.prevent="update(technical)">Atualizar</button>
+            <button type="button" @click.prevent="modify(technical)">Atualizar</button>
           </td>
         </tr>
       </tbody>
@@ -176,6 +176,7 @@ export default {
       ex: 'Cadastro de Técnicos',
       isEdit: false,
       tech: {
+        id:0,
         name: '',
         cpf: '',
         email: '',
@@ -187,6 +188,7 @@ export default {
         createdate: new Date(),
         stacks: [
           {
+            id:0,
             stacks: '',
           },
         ],
@@ -230,6 +232,8 @@ export default {
 
     modify(technical) {     
       this.tech.id = technical.id 
+      this.stacks.id = technical.stacks.id
+      console.log(this.tech)
       Technical.update(this.tech.id, this.tech).then(resposta => {
         //console.log(resposta)
         technical = resposta
