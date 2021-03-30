@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    
+    <title>Cadastro de Técnicos</title>
+  </head>
+  <body>
+
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-5" href="formulario.html">Teste BoxTI</a>
+    </header>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav
+          id="sidebarMenu"
+          class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+          
+          <div class="position-sticky pt-3">
+            <a class="nav-link active" aria-current="page" href="tecnicos.html">              
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-ul" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+              </svg>&emsp;Lista de técnicos
+            </a>
+            <a class="nav-link active" href="formulario.html">                          
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+                <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+              </svg>&emsp;Cadastro de técnicos
+            </a>            
+            </div>              
+        </nav>
+      
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+          <div class="container" id="Form">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              <h1 class="h2">Formulário de Técnico</h1>           
+            </div>
+  
+            <form class="row g-3">
+  
+              <div class="col-12 md-6">
+                <input type="email" class="form-control" id="inputName" placeholder="Nome do técnico" />              
+              </div>
+  
+              <div class="col-12 md-6">
+                <input type="text" class="form-control" id="inputCpf" placeholder="CPF do técnico" />
+              </div>
+  
+              <div class="col-12">            
+                <input type="text" class="form-control" id="inputEmail" placeholder="E-mail do técnico" />
+              </div>
+  
+              <div class="col-12 md-6">              
+                <input type="date" class="form-control" id="inputData" placeholder="Data de nascimentodo técnico" />
+              </div>
+  
+              <div class="col-md-4">
+                <input type="text" class="form-control" id="inputCid" placeholder="Cidade" />
+              </div>
+  
+              <div class="col-md-4">
+                  <select id="inputEst" class="form-select">
+                  <option selected>Estado...</option>
+                  <optgroup label="Região Norte">
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>        
+                    <option value="PA">Pará</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="TO">Tocantins</option>
+                    <option value="AC">Acre</option>
+                 </optgroup>
+             
+                  <optgroup label="Região Nordeste">
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="SE">Sergipe</option>
+                 </optgroup>
+              
+                  <optgroup label="Região Sul">
+                    <option value="PR">Paraná</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="SC">Santa Catarina</option>
+                </optgroup>
+            
+                 <optgroup label="Região Sudeste">
+                    <option value="ES">Espírito Santo</option>	
+                    <option value="MG">Minas Gerais</option>
+                    <option value="RJ">Rio de Janeiro</option>	
+                    <option value="SP">São Paulo</option>
+                </optgroup>
+            
+                 <optgroup label="Região Centro-Oeste">
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="GO">Goiás</option>
+                    <option value="DF">Distrito Federal</option>
+                </optgroup>             
+                </select>
+              </div>
+  
+              <div class="col-4 md-2">              
+                <input type="text" class="form-control" id="inputCep" placeholder="CEP" />
+              </div>
+
+              <div class="row g-3 col-5 md-3">              
+                  <select name="Espec" size="12" multiple="multiple" style="overflow:hidden" >                    
+                      <option value="HTML" label="HTML"></option>                      
+                      <option value="CSS" label="CSS"></option>
+                      <option value="PostegreSQL" label="PostegreSQL"></option>
+                      <option value="PHP" label="PHP"></option>
+                      <option value="JavaScript" label="JavaScript"></option>
+                      <option value="PHP" label="PHP"></option>
+                      <option value="React" label="React"></option>
+                      <option value="React Native" label="React Native"></option>
+                      <option value="NodeJS" label="NodeJS"></option>
+                      <option value="LaLaravelel" label="HTML"></option>
+                      <option value="VueJS" label="VueJS"></option>
+                      <option value="MySQL" label="MySQL"><option>                      
+                  </select> 
+                                   
+              </div>
+              <div class="col-12">
+                <button type="button" class="btn btn-primary">Salvar</button>
+              </div>
+               
+            </form>
+          </div>
+        </main>
+      </div>
+    </div>
+    
+    </body> 
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/bootstrap.jquery-3.6.0.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+</html>
+

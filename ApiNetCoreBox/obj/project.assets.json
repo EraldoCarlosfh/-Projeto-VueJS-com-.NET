@@ -6975,11 +6975,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\workspace\\BoxTI\\ApiNetCoreBox\\ApiNetCoreBox.csproj",
+      "projectUniqueName": "C:\\Users\\Jefferson\\OneDrive\\Área de Trabalho\\Nova pasta\\-Projeto-VueJS-com-.NET\\ApiNetCoreBox\\ApiNetCoreBox.csproj",
       "projectName": "ApiNetCoreBox",
-      "projectPath": "H:\\workspace\\BoxTI\\ApiNetCoreBox\\ApiNetCoreBox.csproj",
+      "projectPath": "C:\\Users\\Jefferson\\OneDrive\\Área de Trabalho\\Nova pasta\\-Projeto-VueJS-com-.NET\\ApiNetCoreBox\\ApiNetCoreBox.csproj",
       "packagesPath": "C:\\Users\\Jefferson\\.nuget\\packages\\",
-      "outputPath": "H:\\workspace\\BoxTI\\ApiNetCoreBox\\obj\\",
+      "outputPath": "C:\\Users\\Jefferson\\OneDrive\\Área de Trabalho\\Nova pasta\\-Projeto-VueJS-com-.NET\\ApiNetCoreBox\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Jefferson\\AppData\\Roaming\\NuGet\\NuGet.Config"

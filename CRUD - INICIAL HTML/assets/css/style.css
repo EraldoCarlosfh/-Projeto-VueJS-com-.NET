@@ -1,0 +1,98 @@
+.bg-dark {
+    background-color: #244873 !important;
+}
+
+
+
+.bg-light {
+    background-color: #2F3C4A !important;
+}
+
+.navbar-brand {
+    font-size: 12pt;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.h2 {
+    font-size: 17pt;
+    font-family: Arial, Helvetica, sans-serif; 
+    color: #244873!important;
+    font-weight: bold;
+}
+
+#Form {
+    justify-content: auto;
+    background-color: #F3F3F3;
+    margin-top: 6vh;    
+    padding: 4vh;
+    padding-top: 0.5px;
+    margin-bottom: 5vh;
+}
+
+#Tec {
+    justify-content: auto;
+    background-color: #F3F3F3;
+    margin-top: 6vh;    
+    padding: 4vh;
+    padding-top: 0.5px;
+    margin-bottom: 5vh
+}
+
+
+.btn-primary {
+    background-color: #6AA839;   
+    font-family: Arial, Helvetica, sans-serif;
+    border: #6AA839;
+    height: 30px;
+    position: relative;
+    line-height: 20px;
+    padding-left: 5vh;
+    padding-right: 5vh;  
+    float: right;    
+}
+
+#bt {
+    background-color: #244873;  
+    border: #244873; 
+    padding-left: 5vh;
+    padding-right: 5vh;
+    padding-bottom: 5vh; 
+    float: right;        
+}
+
+.nav-link {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #F3F3F3;
+    font-size: 11pt;
+}
+
+#div1 {
+    padding-bottom: 2vh;
+}
+
+.nav-link:hover{
+    background-color: #F3F3F3;
+    color: #244873;
+}
+
+.bi-trash-fill{
+    color: #C73232;
+}
+
+.bi-pen-fill {
+    color: #244873;
+}
+
+@media (min-width: 576px) {
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 992px) {
+}
+
+@media (min-width: 1200px) {
+}
+
+@media (min-width: 1400px) {
+}

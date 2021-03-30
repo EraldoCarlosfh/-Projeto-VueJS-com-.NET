@@ -228,13 +228,15 @@ export default {
 
     },
 
-    modify(technical) {
-      Technical.update(technical.id, technical).then(resposta => {
+    modify(technical) {     
+      this.tech.id = technical.id 
+      Technical.update(this.tech.id, this.tech).then(resposta => {
         //console.log(resposta)
         technical = resposta
         alert('Atualizado com sucesso!')
         location.reload()
       })
+  
     },
     editUsers(technicals) {
       this.technicals = technicals
