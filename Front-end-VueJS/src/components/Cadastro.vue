@@ -5,8 +5,7 @@
         <div
           class="d-flex flex-wrap flex-md-nowrap align-items-center justify-content-between pt-3 pb-2 mb-3 border-bottom"
         >
-          <h1 :title="ex">{{ name }}</h1>
-          <p>{{ repostaCount }}</p>
+          <h1 :title="ex">{{ name }}</h1>         
         </div>
 
         <form class="row" @submit.prevent="save">
@@ -20,7 +19,7 @@
               class="form-control"
               id="inputCpf"
               maxlength="14"
-              placeholder="CPF do técnico (000.000.000-00"
+              placeholder="CPF do técnico (000.000.000-00)"
               v-model="tech.cpf"
             />
           </div>
@@ -41,7 +40,7 @@
               type="date"
               class="form-control"
               id="inputData"
-              maxlength="8"
+              maxlength="6"
               placeholder="Data de nascimentodo técnico"
               v-model="tech.birthdate"
             />
@@ -110,7 +109,7 @@
               multiple="multiple"
               style="overflow:hidden"
               id="Stacks"
-              v-model="tech.stack"
+              v-model="tech.stacks"
             >
               <option value="HTML" label="HTML"></option>
               <option value="CSS" label="CSS"></option>
@@ -125,7 +124,7 @@
             </select>
           </div>
           <div class="col-12">
-            <button v-if="!isEdit"  class="btn btn-primary input-group-btn" @click.prevent="save()">
+            <button v-if="!isEdit" class="btn btn-primary input-group-btn" @click.prevent="save()">
               Salvar
             </button>
             <button v-if="isEdit" class="btn btn-primary input-group-btn" @click.prevent="modify(technical)">
@@ -134,33 +133,7 @@
           </div>
         </form>
       </div>
-    </div>
-    <table class="table col-10 offset-md-2">
-      <thead>
-        <tr>
-          <th scope="col">Código</th>
-          <th scope="col">Nome</th>
-          <th scope="col">CPF</th>
-          <th scope="col">Email</th>
-          <th scope="col">Criado em</th>
-          <th scope="col">Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="technical in technicals" :key="technical.id">
-          <th scope="row">{{ technical.id }}</th>
-          <td>{{ technical.name }}</td>
-          <td>{{ technical.cpf }}</td>
-          <td>{{ technical.email }}</td>
-          <td>{{ technical.createDate }}</td>
-          <td>
-            <button type="button" value="" @click.prevent="remove(technical)">Deletar</button>
-            &emsp;
-            <button type="button" @click.prevent="modify(technical)">Atualizar</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    </div>   
   </div>
 </template>
 
@@ -169,6 +142,7 @@ import Technical from '../services/technicals'
 
 export default {
   name: 'Cadastro',
+
   data() {
     return {
       technicals: [],
@@ -213,11 +187,11 @@ export default {
         //console.log()
       })
     },
-    save() {
-      Technical.save(this.tech).then(resposta => {
+    save() {      
+      Technical.save(this.tech).then(resposta => {       
         console.log(resposta)
         alert('Salvo com sucesso!')
-      location.reload()
+        //location.reload()
       })
     },
 

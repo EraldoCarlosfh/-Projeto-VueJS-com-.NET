@@ -2,12 +2,14 @@
   <div class="col-10 offset-md-2">
     <div class="col-12 container" id="Form">
       <div
-        class="d-flex flex-wrap flex-md-nowrap align-items-center justify-content-between pt-3 pb-2 mb-2"
+        class="col d-flex flex-wrap flex-md-nowrap align-items-center justify-content-between pt-3 pb-2 mb-2"
       >
-        <h1>Listagem de Técnicos</h1>
-      </div>
+        <h1 :title="ex">{{name}} </h1> 
+        <p>{{repostaCount}}</p>
+       </div>
+       
 
-      <!--<div class="row col-10 offset-md-2">
+      <div class="d-flex flex-wrap flex-md-nowrap pt-6 pb-3 mb-2">
       <div class="col-3">
         <input type="text" class="form-control" id="inputName" placeholder="Nome do técnico" />
       </div>
@@ -28,7 +30,7 @@
           <option value="MySQL" label="MySQL"></option>
         </select>
       </div>
-    </div> -->
+    </div> 
 
       <table class="table col-12 container">
         <thead>
@@ -88,37 +90,19 @@
 <script>
 import Technical from '../services/technicals'
 
-export default {
-  name: 'Cadastro',
+export default {  
+  name: 'Tecnicos',
   data() {
-    return {      
-      technicals: [],
-      name: 'Formulário de Técnico',
-      ex: 'Cadastro de Técnicos',
-      isEdit: false,
-      tech: {
-        name: "",
-        cpf: "",
-        email: "",
-        birthdate: new Date(""),
-        city: "",
-        state: "",
-        cep: "",
-        changedate: new Date(),
-        createdate: new Date(),
-        stacks: [
-          {
-      
-      stacks: ""
-    }
-  ]
-}
-    }
-  },
-
+    return { 
+      name: 'Listagem de Técnicos',  
+      ex: 'Técnicos Cadastrados',
+      technicals: [], 
+    } 
+    },
+ 
   computed: {
     repostaCount() {
-      return `Total de Técnicos Cadastrados é ${this.technicals.length}`
+      return `Total de Técnicos Cadastrados é ${this.technicals.length}`      
     }
   },
 
@@ -155,7 +139,7 @@ h1,.h1 {
   font-family: Arial, Helvetica, sans-serif;
   color: #244873 !important;
   font-weight: bold;
-}
+ }
 
 #svg2{
 
@@ -183,11 +167,10 @@ h1,.h1 {
   padding: 4vh;
   padding-top: 8.5px;
   margin-bottom: 5vh;
+  padding-bottom: 0vh;
   float: right;
 }
-#msg {
-  margin-bottom: 20vh;
-}
+
 .col-10 {
   flex: 0 0 83.333333%;
   max-width: 83.333333%;

@@ -18,7 +18,8 @@ const routes = [
         name: 'tecnicos',
         path: '/Tecnicos',
         component: Tecnicos
-    }
+    },
+
 ]
 
 const router = new Router({ routes, mode: 'history' })

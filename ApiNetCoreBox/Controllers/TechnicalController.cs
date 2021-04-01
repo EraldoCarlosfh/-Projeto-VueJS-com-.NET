@@ -11,6 +11,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ApiNetCoreBox.Controllers
 {
+   // NpgsqlConnection conn = new NpgsqlConnection(“Server=127.0.0.1;Port=5432;User Id=joe;Password=secret;Database=joedata;”);
+   //conn.Open();
+
     [EnableCors(origins: "http://localhost:8080", headers: "*", methods: "*")]
     [Route("api/[controller]")]
     [ApiController]
